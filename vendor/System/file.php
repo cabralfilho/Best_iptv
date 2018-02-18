@@ -1,6 +1,6 @@
 <?php 
 
-namespace system;
+namespace System;
 
 class File 
 {
@@ -29,7 +29,7 @@ class File
     
     public function __construct($root) 
     {
-        $this-> root = $root;
+        $this->root = $root;
     }
     
     /*
@@ -41,19 +41,20 @@ class File
     
     public function exists($file)
     {
-        return file_exists($file);
+        return file_exists($this->to($file));
     }
     
     /*
     * require the given file 
     *
     * @param sting $file
-    * @return void
+    * @return mixed
     */
     
-    public function require($file)
+    public function call($file)
     {
-        return $file;
+        return require $this->to($file);
+        
     }
 
     /**
@@ -63,9 +64,9 @@ class File
     * @return string
     */
 
-    public function toVender($path)
+    public function toVendor($path)
     {
-    return $this->to("vender" . $path);
+        return $this->to("vendor/" . $path);
     }
 
     /*
@@ -75,8 +76,9 @@ class File
     * @return string
     */
     
-    public function to($path) 
+    public function to($path) // ??????
     {
-        $this->root . static::DS . str_replace(['/', '\\'], static::DS, $path);
+       return  $this->root . static::DS . str_replace(['/', '\\'], static::DS, $path);
     }
+
 }
