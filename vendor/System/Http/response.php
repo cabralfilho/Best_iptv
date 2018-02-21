@@ -111,7 +111,7 @@ class Response
     * @return void
     */
     
-    private function sendHeaders()
+    private function sendHeaders() // ??????
     {
          foreach ($this->headers as $header => $value)
          {

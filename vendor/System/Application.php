@@ -147,6 +147,7 @@ class Application {
             'cookie'       => 'System\\Cookie',
             'load'         => 'System\\Loader',
             'html'         => 'System\\Html',
+            'url'         => 'System\\url',
             'db'           => 'System\\Database',
             'view'         => 'System\\View\\ViewFactory',
 

@@ -77,7 +77,7 @@ class View implements ViewInterface
         
         if (! $this->viewFileExists($relativeViewPath))
         {
-            die( "<b>". $viewPath . "</b> doesn't exists in View folder");
+            die( "<b>". $this->viewPath . "</b> doesn't exists in View folder");
         }
     }
     

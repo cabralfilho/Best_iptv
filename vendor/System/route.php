@@ -86,7 +86,6 @@ class Route
     
     public function getProperRoute()
     {
-        
         foreach ($this->routes as $route)
         {
             if($this->isMatching($route['pattern']))
@@ -94,10 +93,11 @@ class Route
                 $arguments = $this->getArgumentsFrom($route['pattern']);
                 
                 // controller@method
-                list($controller, $method) = explode('@', $route['action']);
                 
+                list($controller, $method) = explode('@', $route['action']);
                
                 return [$controller, $method, $arguments];
+                
             }
         }
     }

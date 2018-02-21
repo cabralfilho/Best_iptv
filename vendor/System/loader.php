@@ -140,7 +140,7 @@ class Loader
     
     
     
-    /**
+    /*
     * Call the given model
     *
     * @param strig $model
@@ -149,12 +149,20 @@ class Loader
     
     public function model($model)
     {
+        $model = $this->getModelName($model);
+        
+        if (! $this->hasModel($model))
+        {
+            $this->addModel($model);
+        }
+        
+        return $this->getModel($model);
         
     }
     
     /**
     * Determine if the given class |model exists
-    * in the controllers model
+    * in the models container
     *
     * @param string $model
     * @return bool
@@ -162,20 +170,22 @@ class Loader
     
     private function hasModel($model)
     {
-        
+        return array_key_exists($model, $this->models);
     }
     
     /**
     * Creat new object for given model and store it
-    * in model container
+    * in models container
     *
     * @param string $model
     * @return void
     */
     
     private function addModel($model)
-    {
+    {   
+        $object = new $model($this->app);
         
+        $this->models[$model] = $object;
     }
     
     
@@ -188,6 +198,24 @@ class Loader
     
     private function getModel($model)
     {
+        return $this->models[$model];
+    }
+    
+    
+    
+    /**
+    * Get the full class name for the given model
+    *
+    * @param string $model
+    * @return string
+    */
+    
+    private function getModelName($model)
+    {
+        $model .= 'Model';
         
+        $model = 'App\\Models\\' . $model;
+        
+        return str_replace('/', '\\', $model);
     }
 }
