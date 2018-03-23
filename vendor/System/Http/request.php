@@ -33,13 +33,14 @@ class Request
         
         if (strpos($requestUri, '?') !== false)
         {
-            list($requestUri, $queryString) = explode('?', $requestUri);
+            list($requestUri, $queryString) = explode('?', $requestUri);  //// ++++
         }
+//         $this->url = preg_replace('#^' . $script . "#", "", $requestUri); ?????????
         
-        $this->url = preg_replace('#^' . $script . "#", "", $requestUri);
+        $this->url = $requestUri == $script ? preg_replace('#^' . $script . "#", "", $requestUri) : rtrim(preg_replace('#^' . $script . "#", "", $requestUri), '/');
         
         $this->baseUrl = $this->server('REQUEST_SCHEME'). '://' . $this->server('HTTP_HOST') . $script . '/' ;
-        
+       
     }
     
     

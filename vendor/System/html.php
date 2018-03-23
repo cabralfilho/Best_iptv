@@ -59,7 +59,7 @@ class Html
     * @return void
     */
     
-    public function setTite($title)
+    public function setTitle($title)
     {
         $this->title = $title;
     }

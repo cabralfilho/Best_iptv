@@ -52,7 +52,8 @@ class Cookie
     
     public function get($key)
     {
-        return array_get($_COOKIE, $key, $default);
+        
+        return array_get($_COOKIE, $key);
     }
     
     

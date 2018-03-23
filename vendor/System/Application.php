@@ -2,6 +2,8 @@
 
 namespace System;
 
+use Closure;
+
 class Application {
     
     /**
@@ -67,6 +69,10 @@ class Application {
     
     public function share($key, $value) 
     {
+        if($value instanceof Closure)
+        {
+            $value = call_user_func($value, $this);
+        }
         $this ->container[$key] = $value;
     }
     
@@ -132,7 +138,7 @@ class Application {
     
     /*
     * Core classes
-    * Get all core classes with there aliases
+    * Get all core classes with there  
     *
     * @return array 
     */
@@ -147,7 +153,7 @@ class Application {
             'cookie'       => 'System\\Cookie',
             'load'         => 'System\\Loader',
             'html'         => 'System\\Html',
-            'url'         => 'System\\url',
+            'url'          => 'System\\url',
             'db'           => 'System\\Database',
             'view'         => 'System\\View\\ViewFactory',
 
@@ -220,7 +226,7 @@ class Application {
         
         $object = $coreClasses[$alias];
         
-        return new $object($this);
+        return new $object($this); // ????? $this
     }
     
     

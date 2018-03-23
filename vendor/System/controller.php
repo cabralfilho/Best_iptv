@@ -13,6 +13,16 @@ abstract class Controller
     
     protected $app;
     
+    
+    /**
+    * Errors container
+    *
+    * @var array
+    */
+    
+    protected $errors = [];
+    
+    
     /**
     * constuctor
     *
@@ -25,7 +35,17 @@ abstract class Controller
     }
     
     
+    /**
+    * Enconde the given value to json
+    * 
+    * @param mixed $data
+    * @return string
+    */
     
+    public function json($data)
+    {
+        return json_encode($data);
+    }
     /**
     * Call shared application object dynamically
     *

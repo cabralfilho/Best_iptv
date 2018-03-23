@@ -34,7 +34,8 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="<?php echo url('/admin/login/submit')?>" method="post" >
+    <form id = "login-form" action="<?php echo url('/admin/login/submit')?>" method="post" >
+      <div  id="login-result"></div><!--class="alert alert-danger"-->
       <div class="form-group has-feedback">
         <input type="email" name = 'email' class="form-control" placeholder="Email" required ="required">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -47,17 +48,17 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Remember Me
+              <input type="checkbox" name = 'remb'> Remember Me
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" id="but-form" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
-    </form>
+    </form> 
   </div>
   <!-- /.login-box-body -->
 </div>
@@ -69,14 +70,7 @@
 <script src="<?php echo assests("admin/bootstrap/js/bootstrap.min.js"); ?>"></script>
 <!-- iCheck -->
 <script src= "<?php echo assests("admin/plugins/iCheck/icheck.min.js"); ?>"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
+<script src= "<?php echo assests("admin/js/frotend.js"); ?>"></script>
+
 </body>
 </html>

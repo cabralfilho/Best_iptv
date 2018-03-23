@@ -70,7 +70,7 @@ class Session
     
     public function get($key)
     {
-        return array_get($_SESSION, $key, $default);
+        return array_get($_SESSION, $key);
     }
     
     

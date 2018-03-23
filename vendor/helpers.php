@@ -30,9 +30,10 @@ if (! function_exists('array_get'))
     * @param mixed $default
     */
     
-    function array_get($array, $key, $default)
+    function array_get($array, $key, $default = "not found in array")
     {
-        return isset($array[$key]) ? $array[$key] : $default;
+        
+        return array_key_exists($key, $array) ? $array[$key] : $default;
     }
 }
 

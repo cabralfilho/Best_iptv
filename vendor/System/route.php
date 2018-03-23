@@ -100,6 +100,7 @@ class Route
                 
             }
         }
+        return $this->app->url->redirectTo($this->notFound);
     }
     
     
@@ -114,6 +115,7 @@ class Route
     {
         return preg_match($pattern, $this->app->request->url());
     }
+    
     
     /*
     * Get Arguments from the current request url

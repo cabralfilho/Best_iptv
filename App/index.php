@@ -14,6 +14,25 @@ $app->route->add('/', 'Home');
 
 $app->route->add('/admin/login', 'Admin/Login');
 $app->route->add('/admin/login/submit', 'Admin/Login@submit', 'POST');
+$app->route->add('/admin/category', 'Admin/Category');
+
+// share admin layout
+
+$app->share('adminLayout', function ($app) {
+    return $app->load->controller('Admin/Common/Layout');
+});
+
+//$app->share('adminLayout', function ($app) {
+//    return $app->load->controller('Admin/Common/Layout');
+//});
+//
+//$app->share('adminLayout', function ($app) {
+//    return $app->load->controller('Admin/Common/Layout');
+//});
+//
+//$app->share('adminLayout', function ($app) {
+//    return $app->load->controller('Admin/Common/Layout');
+//});
 
 
 // Admin => users
@@ -25,7 +44,7 @@ $app->route->add('/admin/users/edit/:id', 'Admin/Users@edit');
 $app->route->add('/admin/users/save/:id', 'Admin/Users@save', 'POST');
 $app->route->add('/admin/users/delete/:id', 'Admin/Users@delete');
 
-// Admin => users
+// Admin => users-groups
 
 $app->route->add('/admin/users-groups', 'Admin/UsersGroups');
 $app->route->add('/admin/users-groups/add', 'Admin/UsersGroups@add');

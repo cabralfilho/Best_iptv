@@ -28,7 +28,7 @@ class ViewFactory
     
     
     /**
-    * Render the given view path with the passed variables and generate the
+    * Render the given view path with the passed variables 
     *
     * @param string $viewPath
     * @param array $data
