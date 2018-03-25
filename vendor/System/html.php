@@ -71,7 +71,7 @@ class Html
     * @return string
     */
     
-    public function getTite($title)
+    public function getTitle()
     {
        return  $this->title;
     }

@@ -22,18 +22,6 @@ $app->share('adminLayout', function ($app) {
     return $app->load->controller('Admin/Common/Layout');
 });
 
-//$app->share('adminLayout', function ($app) {
-//    return $app->load->controller('Admin/Common/Layout');
-//});
-//
-//$app->share('adminLayout', function ($app) {
-//    return $app->load->controller('Admin/Common/Layout');
-//});
-//
-//$app->share('adminLayout', function ($app) {
-//    return $app->load->controller('Admin/Common/Layout');
-//});
-
 
 // Admin => users
 

@@ -16,7 +16,9 @@ class HeaderController extends Controller
     public function index()
     {
 
-        return $this->view->render('admin/common/header');
+        $data['title'] = $this->html->getTitle();
+
+        return $this->view->render('admin/common/header', $data);
     }
     
   

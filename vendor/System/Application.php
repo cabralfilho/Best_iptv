@@ -155,8 +155,8 @@ class Application {
             'html'         => 'System\\Html',
             'url'          => 'System\\url',
             'db'           => 'System\\Database',
+            'validator'     => 'System\\Validation',
             'view'         => 'System\\View\\ViewFactory',
-
         ];
     }
     
