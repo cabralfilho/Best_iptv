@@ -148,18 +148,25 @@ class Application {
         return [
             'request'      => 'System\\Http\\Request',
             'response'     => 'System\\Http\\Response',
+            'EmailFunc'    => 'System\\Emails\\EmailsFunc',
             'session'      => 'System\\Session',
             'route'        => 'System\\Route',
+            'file'         => 'System\\File',
             'cookie'       => 'System\\Cookie',
+            'lang'         => 'System\\Lang',
             'load'         => 'System\\Loader',
             'html'         => 'System\\Html',
-            'url'          => 'System\\url',
+            'Email'        => 'System\\Email',
+            'url'          => 'System\\Url',
             'db'           => 'System\\Database',
-            'validator'     => 'System\\Validation',
+            'ip'           => 'System\\Ip',
+            'validator'    => 'System\\Validation',
             'view'         => 'System\\View\\ViewFactory',
+            'phpMailer'    => 'PHPMailer\\Src\\PHPMailer',
+            'STMP'         => 'PHPMailer\\Src\\STMP',
+            'Exception'    => 'PHPMailer\\Src\\Exception',
         ];
     }
-    
     
     
     
@@ -239,6 +246,7 @@ class Application {
     public function run() 
     {
         $this->session->start();
+        ini_set('date.timezone', 'europe/Berlin');
         
         $this->request->prepareUrl();
         

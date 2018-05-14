@@ -1,0 +1,298 @@
+// sass beginn
+
+@import "../../scss/bootstrap";
+
+
+//mixins
+
+
+@mixin bxshadow($x, $y, $s, $m, $col, $x2, $y2, $s2, $m2, $col3){
+    
+    -webkit-box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+    
+    -moz-box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+    
+    -o-box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+    
+    box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+        
+            
+}
+
+
+@mixin horizontal-gradient($from, $to, $stop: 100%) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $from), color-stop($stop, $to));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient(left, $from 0%, $to $stop);
+
+  /* IE10+ */
+  background: -ms-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Standard */
+  background: linear-gradient(to right, $from 0%, $to $stop);
+
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='$to',GradientType=1 );
+}
+
+
+@mixin trans($elo) {
+    
+    $tim :.5s;
+    $fun:0;
+    @if $elo > $tim{
+        
+        $fun:linear;
+        
+    }@else {
+        
+        $fun:ease-in-out ;
+        
+    }
+   
+    -webkit-transition: all $elo $fun;
+    -moz-transition: all $elo $fun;
+    -o-transition: all $elo $fun;
+    transition: all $elo $fun;
+     
+}
+
+// end mixins
+
+
+
+// color group
+
+$colMain : #cff2e9;
+$col1 : #85DDD1;
+$col2 : #FB7F75;
+$col3 : #D43223;
+$col4 : #A9150B;
+$colWr : #6D1610;
+$colWr2 : #A1BBB8;
+$colWrH : #065358;
+$coldscr2 : #223529;
+$col5 : #F2C478;
+
+//color prop
+.col0{
+    color: $colMain !important;
+}
+.col1{
+    color: $col1 !important;
+}
+.col2{
+    color: $col2 !important;
+}
+.col3{
+    color: $col3 !important;
+}
+.col4{
+    color: $col4 !important;
+}
+.col5{
+    color: $col5 !important;
+}
+.colWr{
+    color: $colWr !important;
+}
+.colWr2{
+    color: $colWr2 !important;
+}
+.colWrH{
+    color: $colWrH !important;
+}
+.coldscr2{
+    color: $coldscr2 !important;
+}
+// end color prop
+
+// backgroun prop
+.b-col0{
+    background-color: $colMain;
+}
+.b-col1{
+    background-color: $col1;
+}
+.b-col2{
+    background-color: $col2;
+}
+.b-col3{
+    background-color: $col3;
+}
+.b-col4{
+    background-color: $col4;
+}
+.b-colWr{
+    background-color: $colWr;
+}
+.b-col5{
+    background-color: $col5;
+}
+.b-colWr2{
+    background-color: $colWr2;
+}
+.b-colWrH{
+    background-color: $colWrH;
+}
+.b-coldscr2{
+    background-color: $coldscr2;
+}
+// end backgroun prop
+
+
+
+// header foto path
+
+//@include media-breakpoint-up(xs) { ... }
+//@include media-breakpoint-up(sm) { ... }
+//@include media-breakpoint-up(md) { ... }
+//@include media-breakpoint-up(lg) { ... }
+//@include media-breakpoint-up(xl) { ... }
+
+
+//@include media-breakpoint-down(xs) { ... }
+//@include media-breakpoint-down(sm) { ... }
+//@include media-breakpoint-down(md) { ... }
+//@include media-breakpoint-down(lg) { ... }
+
+
+//@include media-breakpoint-only(xs) { ... }
+//@include media-breakpoint-only(sm) { ... }
+//@include media-breakpoint-only(md) { ... }
+//@include media-breakpoint-only(lg) { ... }
+//@include media-breakpoint-only(xl) { ... }
+
+
+//@include media-breakpoint-up(xs) { ... }
+//@include media-breakpoint-up(sm) { ... }
+//@include media-breakpoint-up(md) { ... }
+//@include media-breakpoint-up(lg) { ... }
+//@include media-breakpoint-up(xl) { ... }
+
+
+$img1 : "../imgs/sld1.jpg";
+$img2 : "../imgs/unnamed.png";
+$img3 : "../imgs/rsr.png";
+
+$ft-fmy1 : 'Concert One', cursive;
+$ft-fmy2 : 'Roboto', sans-serif;
+
+// public classes 
+
+.layout{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.dscr{
+    font-family: $ft-fmy2;
+    font-weight: 600;
+    color: $colWr2;
+}
+.dscr2{
+    font-family: $ft-fmy2;
+    font-weight: 300;
+    color: $coldscr2;
+}
+
+.head{
+    font-family: $ft-fmy1;
+}
+
+.far, .fas{
+    cursor: pointer;
+}
+// bootstrap updating
+
+.border-right {
+    border-right: 1px solid $colWr2 !important;
+}
+
+.shadow{
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+
+// end bootstrap updating
+
+body{
+    background-color: $colMain !important;
+    font-family: $ft-fmy1;
+    padding-top: 0 !important;
+    height: 1500px;
+}
+
+
+.log-in
+{
+    margin-top: 25vh;
+}
+
+.page-title{
+    margin-top: 18vh;
+}
+
+// start nav bar
+
+nav{
+    background-color: transparent;
+    position: relative;
+    min-height: 65px;  
+}
+
+nav a, nav div ul li a{
+    color: $col4 !important;
+    font-weight: 500;
+    font-size: 26px;
+    opacity: 1;
+    cursor: pointer;
+    @include trans(.3s);
+    
+}
+
+nav div ul li a:hover {
+    transform:  scale(1.2,1.2);
+    color: $colMain !important;
+    background-color: $col2;
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+.navbar-collapse{
+    width: 100% !important;
+}
+
+
+nav ul{
+    width: 100%;
+}
+
+// nums
+
+.nums
+{
+    margin-top: 20vh;
+}
+// nums
+
+
+// tables und facts
+
+.tables table thead th {
+    text-align: center;
+}
+
+// tables und facts

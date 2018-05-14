@@ -82,7 +82,7 @@ class Session
     * @return bool
     */
     
-    public function has($has)
+    public function has($key)
     {
         return isset($_SESSION[$key]);
     }

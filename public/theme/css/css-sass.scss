@@ -1,0 +1,704 @@
+// sass beginn
+
+@import "../../scss/bootstrap";
+
+
+//mixins
+
+
+@mixin bxshadow($x, $y, $s, $m, $col, $x2, $y2, $s2, $m2, $col3){
+    
+    -webkit-box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+    
+    -moz-box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+    
+    -o-box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+    
+    box-shadow:$x $y $y $m $col, $x2 $y2 $s2 $m2 $col;
+        
+            
+}
+
+
+@mixin horizontal-gradient($from, $to, $stop: 100%) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $from), color-stop($stop, $to));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient(left, $from 0%, $to $stop);
+
+  /* IE10+ */
+  background: -ms-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Standard */
+  background: linear-gradient(to right, $from 0%, $to $stop);
+
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='$to',GradientType=1 );
+}
+
+
+@mixin trans($elo) {
+    
+    $tim :.5s;
+    $fun:0;
+    @if $elo > $tim{
+        
+        $fun:linear;
+        
+    }@else {
+        
+        $fun:ease-in-out ;
+        
+    }
+   
+    -webkit-transition: all $elo $fun;
+    -moz-transition: all $elo $fun;
+    -o-transition: all $elo $fun;
+    transition: all $elo $fun;
+     
+}
+
+// end mixins
+
+
+
+// color group
+
+$colMain : #cff2e9;
+$col1 : #85DDD1;
+$col2 : #FB7F75;
+$col3 : #D43223;
+$col4 : #A9150B;
+$colWr : #6D1610;
+$colWr2 : #A1BBB8;
+$colWrH : #065358;
+$coldscr2 : #223529;
+$col5 : #F2C478;
+
+//color prop
+.col0{
+    color: $colMain !important;
+}
+.col1{
+    color: $col1 !important;
+}
+.col2{
+    color: $col2 !important;
+}
+.col3{
+    color: $col3 !important;
+}
+.col4{
+    color: $col4 !important;
+}
+.col5{
+    color: $col5 !important;
+}
+.colWr{
+    color: $colWr !important;
+}
+.colWr2{
+    color: $colWr2 !important;
+}
+.colWrH{
+    color: $colWrH !important;
+}
+.coldscr2{
+    color: $coldscr2 !important;
+}
+// end color prop
+
+// backgroun prop
+.b-col0{
+    background-color: $colMain;
+}
+.b-col1{
+    background-color: $col1;
+}
+.b-col2{
+    background-color: $col2;
+}
+.b-col3{
+    background-color: $col3;
+}
+.b-col4{
+    background-color: $col4;
+}
+.b-colWr{
+    background-color: $colWr;
+}
+.b-col5{
+    background-color: $col5;
+}
+.b-colWr2{
+    background-color: $colWr2;
+}
+.b-colWrH{
+    background-color: $colWrH;
+}
+.b-coldscr2{
+    background-color: $coldscr2;
+}
+// end backgroun prop
+
+
+
+// header foto path
+
+//@include media-breakpoint-up(xs) { ... }
+//@include media-breakpoint-up(sm) { ... }
+//@include media-breakpoint-up(md) { ... }
+//@include media-breakpoint-up(lg) { ... }
+//@include media-breakpoint-up(xl) { ... }
+
+
+//@include media-breakpoint-down(xs) { ... }
+//@include media-breakpoint-down(sm) { ... }
+//@include media-breakpoint-down(md) { ... }
+//@include media-breakpoint-down(lg) { ... }
+
+
+//@include media-breakpoint-only(xs) { ... }
+//@include media-breakpoint-only(sm) { ... }
+//@include media-breakpoint-only(md) { ... }
+//@include media-breakpoint-only(lg) { ... }
+//@include media-breakpoint-only(xl) { ... }
+
+
+$img1 : "../imgs/sld1.jpg";
+$img2 : "../imgs/unnamed.png";
+$img3 : "../imgs/rsr.png";
+
+$ft-fmy1 : 'Concert One', cursive;
+$ft-fmy2 : 'Roboto', sans-serif;
+
+// public classes 
+
+.layout{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.dscr{
+    font-family: $ft-fmy2;
+    font-weight: 600;
+    color: $colWr2;
+}
+.dscr2{
+    font-family: $ft-fmy2;
+    font-weight: 300;
+    color: $coldscr2;
+}
+
+.head{
+    font-family: $ft-fmy1;
+}
+
+.noMR{
+    margin: 0 !important;
+}
+// bootstrap updating
+
+.border-right {
+    border-right: 1px solid $colWr2 !important;
+}
+
+.shadow{
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+
+// end bootstrap updating
+
+body{
+    background-color: $colMain !important;
+    font-family: $ft-fmy1;
+    padding-top: 0 !important;
+}
+
+
+// start nav bar
+
+nav{
+    background-color: transparent;
+    position: relative;
+    min-height: 65px;  
+}
+
+nav a, nav div ul li a{
+    color: $col4 !important;
+    font-weight: 500;
+    font-size: 26px;
+    opacity: 1;
+    cursor: pointer;
+    @include trans(.3s);
+    
+}
+
+nav div ul li a:hover {
+    transform:  scale(1.2,1.2);
+    color: $colMain !important;
+    background-color: $col2;
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+.navbar-collapse{
+    width: 100% !important;
+}
+
+
+nav ul{
+    width: 100%;
+}
+
+
+#nav-mobile{
+    height: 100vh;
+    width: 55vh;
+    z-index: 1000;
+    left: -55vh;
+    font-size: 16px;
+}
+
+.nav-toggel{
+    z-index: 999;
+}
+.nav-toggel i{
+    margin: 10px !important;
+}
+#nav-mobile ul li, #nav-mobile ul li a{
+    width: 100%
+}
+
+
+//end nav
+
+//start header  
+
+header{
+    background-image: url($img1);
+    min-height: 600px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    z-index: 0;
+}
+
+header .layout{
+    background-color: $col1;
+    opacity: 0.9;
+    z-index: 0;
+}
+
+header .hed-info{
+    z-index: 2;
+    padding-top: 20vh;
+}
+
+header .hed-info div h1{
+    color: $colWrH;
+    
+}
+
+header .hed-info div p{
+    color: $colWrH;
+}
+
+header .hed-info div input[type="submit"]{
+    background-color: $col3;
+    color: $col1;
+}
+header .hed-info div input[type="submit"]:hover{
+    background-color: $col2;
+    color: $col4;
+}
+
+header .hed-info .hed-pt2 form{
+    background-color: $colWrH;
+    border-radius: 20px;
+}
+
+header .hed-info .hed-pt2 form h4{
+    color: $col1;
+}
+
+header .hed-info .hed-pt2 form p{
+    margin-top: 1vh;
+    color: $colWr2;
+}
+
+header .hed-info .hed-pt2 form .form-group{
+    margin-top: 3.5vh;
+}
+
+header .hed-info .hed-pt2 form button{
+    background-color: $col4;
+    margin-top: 2vh;
+}
+
+header .hed-info .hed-pt2 form button:hover{
+    background-color: $col1;
+}
+
+
+//Responsive
+
+@include media-breakpoint-down(lg) { 
+
+    header{
+        height: auto;
+        padding: 10vh;
+
+}
+    
+    header .hed-info{
+    padding-top: 10vh;
+}
+}
+
+
+//end header
+
+//start about
+
+.about{
+    margin-top: -10vh;
+    position: sticky;
+    z-index: 1;
+}
+
+.about .about-prop {
+    background-color: $colWrH;
+}
+
+.about .about-prop .col-3:hover{
+    background-color: $coldscr2;
+}
+
+.about .about-prop div h3, .about .about-prop div i {
+    color: $col1;
+}
+
+.about .about-prop div p {
+    color: $colWr2;
+}
+
+.about div h1{
+    color: $col3;
+}
+
+.about div button{
+    background-color: $col3;
+    font-family: $ft-fmy1;
+    color: $colMain;
+}
+.about div button:hover{
+    background-color: $col1;
+    font-family: $ft-fmy1;
+    color: $col4;
+}
+
+
+
+//Responsive
+
+@include media-breakpoint-down(lg) { 
+
+     .about{
+        margin-top: 10vh;
+    }
+}
+
+@include media-breakpoint-down(md) { 
+    
+    .about .about-prop h3{
+        font-size: 13px;
+        
+    }
+    .about .about-prop p{
+        font-size: 11px;
+        
+    }
+    
+    .about .about-prop div:nth-child(3), .about .about-prop div:nth-child(4){
+        border-top: 1px solid #A1BBB8 !important;
+        
+    }
+    
+}
+
+
+//end about
+
+// start offer
+
+.offer{
+    background-color:$col3;
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+
+.offer div .text-box {
+    background-color: $colMain;
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+    margin-top: -100px;
+}
+
+
+
+@include media-breakpoint-down(sm) 
+{ 
+    .offer h2 {
+        font-size: 20px;
+    }
+    .offer p {
+        font-size: 14px;
+    }
+    .offer div div:nth-child(2) p {
+        margin-top: 5vh;
+    }
+}
+// end offer
+
+// start about offer
+
+.about-offer{
+    margin-top: 5vh;
+}
+.about-offer div .flex-column:hover {
+    background-color: rgba(57, 11, 11, 0.3);
+    
+}
+.about-offer div .flex-column a:hover {
+    color: $colWrH;
+    
+}
+
+
+@include media-breakpoint-down(md) { 
+    
+    .about-offer div:nth-child(2) h3{
+        font-size: 13px;
+        
+    }
+    .about-offer div:nth-child(2) p{
+        font-size: 11px;
+    }
+    
+    .about-offer div:nth-child(2) i {
+        
+    }
+    
+    .about-offer div:nth-child(2) div:nth-child(3), .about-offer div:nth-child(2) div:nth-child(4){
+        border-top: 1px solid #A1BBB8 !important;
+    }
+    
+}
+
+// end about offer
+
+// start diveses
+
+.devices{
+    @include horizontal-gradient($col4, $col2);
+}
+
+//@include media-breakpoint-up(xs) { ... }
+//@include media-breakpoint-up(sm) { ... }
+//@include media-breakpoint-up(md) { ... }
+//@include media-breakpoint-up(lg) { ... }
+//@include media-breakpoint-up(xl) { ... }
+
+
+//@include media-breakpoint-down(xs) { ... }
+//@include media-breakpoint-down(sm) { ... }
+//@include media-breakpoint-down(md) { ... }
+//@include media-breakpoint-down(lg) { ... }
+
+
+//@include media-breakpoint-only(xs) { ... }
+//@include media-breakpoint-only(sm) { ... }
+//@include media-breakpoint-only(md) { ... }
+//@include media-breakpoint-only(lg) { ... }
+//@include media-breakpoint-only(xl) { ... }
+
+@include media-breakpoint-down(md) 
+{
+   .devices  .prob p
+    {
+        font-size: 14px;
+    }
+}
+
+// end diveses
+
+// start customer
+
+.customer div div .flex-column .btn:hover{
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+    background-color: $col4;
+    color: $colMain;
+}
+  
+.customer div div .loop div .num{
+    font-size: 50px;
+}
+
+.customer div div .loop div p:nth-of-type(2){
+    font-size: 20px;
+}
+
+// Responsive
+
+@include media-breakpoint-down(lg) 
+{
+    .customer div div
+    {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    
+    .customer div div .loop div:nth-child(2), .customer div div .loop div:nth-child(4) {
+//        border-left: none;
+        border-left: 1px solid transparent;
+    }
+    
+    .customer div .loop .num{
+        font-size: 32px !important;
+    }
+    .customer div .loop div p:nth-child(2){
+        font-size: 18px !important;
+    }
+    
+    .customer div .loop div {
+        border: none !important;
+        margin: none !important;
+    }
+    
+}
+
+// end customer
+
+// start offering
+
+.offering .row .chanels .rounded{
+    height: 65px;
+    overflow-y: hidden;
+    @include trans(.3s);
+}
+
+.offering .row .chanels .rounded:hover{
+    background-color: $colMain;
+    height: 150px;
+    @include horizontal-gradient($col4, $col2);
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+
+
+.offering .row .chanels .rounded:hover > h4{
+    border-bottom: .5px solid $colMain;
+    color: $colMain;
+}
+
+// responsive
+
+@include media-breakpoint-down(lg) 
+{ 
+    .offering .row .chanels {
+        padding-top: 4vh;
+    }
+}
+// end offering
+
+// start reseller
+
+.reseller .row .rsr-cards .card{
+    background-image: url($img3);
+//    background-color: unset;
+//    background-clip: unset;
+//    border: unset;
+//    border-radius: unset;
+    background-position: -13px -11px;
+    height: 272px;
+}
+
+.reseller .row .rsr-cards .card h3,
+.reseller .row .rsr-cards .card h4,
+.reseller .row .rsr-cards .card small,
+.reseller .row .rsr-cards .card .blockquote,
+{
+    z-index: 1;
+}
+
+.reseller .row .rsr-cards .card .layout{
+    background-color: $col4;
+    opacity: 0.94;
+    z-index: 0;
+}
+
+.reseller .row .rsr-cards .card .blockquote button{
+    position: absolute;
+    bottom: 15px;
+    left: 46px;
+}
+
+.reseller .row .rsr-cards .card .blockquote button:hover{
+    background-color: $col1;
+    color: $colMain;
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+
+// end reseller
+
+// start iptv channels
+
+.iptvChanels div .row div .tv-card{
+    @include horizontal-gradient($colWrH, $col1);
+    @include bxshadow(0px,4px,7px,0px,rgba(0, 0, 0,.5),0px,-4px,7px,0px,rgba(0, 0, 0,.5));
+}
+
+.iptvChanels div .row div .tv-card .frezz
+{
+     position: relative;
+     top: -17px;
+}
+
+
+.iptvChanels div .row div .tv-card button
+{
+     cursor: pointer;
+     @include trans(.2s);
+}
+
+.iptvChanels div .row div .tv-card button:hover
+{
+    background-color: $col3;
+    @include bxshadow(0px,2px,2px,0px,rgba(0, 0, 0,.5),0px,-2px,3px,0px,rgba(0, 0, 0,.5));
+    color: $col5 !important;
+}
+
+// end iptv channels
+
+// start contact
+
+.contact div div .form input[type="submit"]:hover
+{
+    background-color: $col1;
+    color: $colWrH !important;
+}
+// end contact
+

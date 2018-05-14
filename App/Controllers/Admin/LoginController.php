@@ -15,15 +15,17 @@ class LoginController extends Controller
     
     public function index()
     {
-        $loginModel = $this->load->model('login');
+        $loginModel = $this->load->model('Login');
         
         if ($loginModel->isLogged())
         {
-//            return $this->url->redirectTo('/admin');
+            return $this->url->redirectTo('/hmzd/dashboard');
         }
         
-        return $this->view->render('admin/users/login');
-        
+        $data['header'] = $this->load->controller('Admin/Common/Header')->index();
+        $data['footer'] = $this->load->controller('Admin/Common/Footer')->index();
+
+        return $this->view->render('admin/users/login', $data);
     }
     
     
@@ -39,13 +41,15 @@ class LoginController extends Controller
         
         if($this->isValid())
         {
-            $loginModel  = $this->load->model('login');
+            $loginModel  = $this->load->model('Login');
+            
             $logInUser = $loginModel->user();
             
             if ($this->request->post('remb'))
             {
                 // save login data in cookie
-                $this->cookie->set('login', $logInUser->code);
+               $json['cookie'] = "login";
+               $json['cookieVal'] = $logInUser->code;
             }
             else
             {
@@ -53,9 +57,9 @@ class LoginController extends Controller
                 $this->session->set('login', $logInUser->code);
             }
             
-            $json['success'] = 'Welcome Back ' . $logInUser->first_name;
+            $json['success'] = 'Welcome Back ' . $logInUser->name;
             
-            $json['redirect'] = $this->url->link('/admin');
+            $json['redirect'] = $this->url->link('/hmzd/dashboard');
         }
         else
         {
@@ -73,16 +77,12 @@ class LoginController extends Controller
     
     private function isValid()
     {
-        $email = $this->request->post('email');
-        $pass = $this->request->post('pass');
+        $name = $this->request->post('name');
+        $pass  = $this->request->post('password');
         
-        if (! $email)
+        if (! $name)
         {
             $this->errors[] = 'please insert EMAIL ADRESS';
-        }
-        elseif (! filter_var($email, FILTER_VALIDATE_EMAIL))
-        {
-            $this->errors[] = 'Please insert valid EMAIL';
         }
         
         if (!$pass)
@@ -92,9 +92,9 @@ class LoginController extends Controller
         
         if (! $this->errors)
         {
-            $loginModel = $this->load->model('login');
+            $loginModel = $this->load->model('Login');
 
-            if(! $loginModel->isValidLogin($email, $pass))
+            if(! $loginModel->isValidLogin($name, $pass))
             {
                 $this->errors[] = 'Invalid login Data';
             }   

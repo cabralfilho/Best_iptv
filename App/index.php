@@ -6,90 +6,53 @@ use System\Application;
 
 $app = Application::getInstance();
 
+
+//ssl Cirtificate
+
+$app->route->add('/.well-known/acme-challenge/ByRVNu-6dGSzB_HTiYRWlqq_5I5CEmM7nq1xtjMad_w', 'Ssl@index1');
+$app->route->add('/.well-known/acme-challenge/eJ70ymlaTkIP_HCHjTpFxN8FLiprnrFouHou6a1d_Zk', 'Ssl@index2');//ssl Cirtificate
+
+//pay susccses and canceled
+
+$app->route->add('/pay/2y10SMf9soZWai0IJOIDFZPFOedYxiXrzzYKvueO4FfQwwvaxNYIg3Zsq', 'PaySucs'); // suc
+$app->route->add('/pay/sucs', 'PaySucs@sucs'); // suc
+$app->route->add('/pay/2y10kykd4YB1vxmd4GsmgDxzWew0FCZ3oPOC9g7ot7hs9OmAx7JSdLKqz', 'PayCancel'); // cancel
+
 // Home
 
 $app->route->add('/', 'Home');
+$app->route->add('/vs', 'Home@load');
+$app->route->add('/online', 'Home@online');
+$app->route->add('/submit/Trail', 'Home@submitTrail', 'post');
+$app->route->add('/submit/contact', 'Home@submitContact', 'post');
 
 // Admin Routes
 
-$app->route->add('/admin/login', 'Admin/Login');
-$app->route->add('/admin/login/submit', 'Admin/Login@submit', 'POST');
-$app->route->add('/admin/category', 'Admin/Category');
+$app->route->add('/hmzd', 'Admin/Login');
+$app->route->add('/hmzd/login/submit', 'Admin/Login@submit', 'POST');
 
-// share admin layout
-
-$app->share('adminLayout', function ($app) {
-    return $app->load->controller('Admin/Common/Layout');
-});
-
-
-// Admin => users
-
-$app->route->add('/admin/users', 'Admin/Users');
-$app->route->add('/admin/users/add', 'Admin/Users@add');
-$app->route->add('/admin/users/submit', 'Admin/Users@submit', 'POST');
-$app->route->add('/admin/users/edit/:id', 'Admin/Users@edit');
-$app->route->add('/admin/users/save/:id', 'Admin/Users@save', 'POST');
-$app->route->add('/admin/users/delete/:id', 'Admin/Users@delete');
-
-// Admin => users-groups
-
-$app->route->add('/admin/users-groups', 'Admin/UsersGroups');
-$app->route->add('/admin/users-groups/add', 'Admin/UsersGroups@add');
-$app->route->add('/admin/users-groups/submit', 'Admin/UsersGroups@submit', 'POST');
-$app->route->add('/admin/users-groups/edit/:id', 'Admin/UsersGroups@edit');
-$app->route->add('/admin/users-groups/save/:id', 'Admin/UserGroupss@save', 'POST');
-$app->route->add('/admin/users-groups/delete/:id', 'Admin/UsersGroups@delete');
-
-// Admin => posts
-
-$app->route->add('/admin/posts', 'Admin/Posts');
-$app->route->add('/admin/posts/add', 'Admin/Posts@add');
-$app->route->add('/admin/posts/submit', 'Admin/Posts@submit', 'POST');
-$app->route->add('/admin/posts/edit/:id', 'Admin/Posts@edit');
-$app->route->add('/admin/posts/save/:id', 'Admin/Posts@save', 'POST');
-$app->route->add('/admin/posts/delete/:id', 'Admin/Posts@delete');
-
-// // Admin => comments
-
-$app->route->add('/admin/posts/:id/comments', 'Admin/Comments');
-$app->route->add('/admin/comments/edit/:id', 'Admin/Comments@edit');
-$app->route->add('/admin/comments/save/:id', 'Admin/Comments@save', 'POST');
-$app->route->add('/admin/comments/delete/:id', 'Admin/Comments@delete');
-
-// Admin => ads
-
-$app->route->add('/admin/ads', 'Admin/Ads');
-$app->route->add('/admin/ads/add', 'Admin/Ads@add');
-$app->route->add('/admin/ads/submit', 'Admin/Ads@submit', 'POST');
-$app->route->add('/admin/ads/edit/:id', 'Admin/Ads@edit');
-$app->route->add('/admin/ads/save/:id', 'Admin/Ads@save', 'POST');
-$app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete');
-
-// Admin => cotegories
-
-$app->route->add('/admin/cotegories', 'Admin/Cotegories');
-$app->route->add('/admin/cotegories/add', 'Admin/Cotegories@add');
-$app->route->add('/admin/cotegories/submit', 'Admin/Cotegories@submit', 'POST');
-$app->route->add('/admin/cotegories/edit/:id', 'Admin/Cotegories@edit');
-$app->route->add('/admin/cotegories/save/:id', 'Admin/Cotegories@save', 'POST');
-$app->route->add('/admin/cotegories/delete/:id', 'Admin/Cotegories@delete');
-
-// Admin => settings
-
-$app->route->add('/admin/settings', 'Admin/Settings');
-$app->route->add('/admin/settings/save', 'Admin/Settings@save', 'POST');
-
-// Admin => Contacts
-
-$app->route->add('/admin/contacts', 'Admin/Contacts');
-$app->route->add('/admin/contacts/reply/:id', 'Admin/Contacts@reply');
-$app->route->add('/admin/contacts/send/:id', 'Admin/Contacts@send', 'POST');
-
-// dashboard
-
-$app->route->add('/admin', 'Admin/Dashboard');
-$app->route->add('/admin/dashboard', 'Admin/Dashboard');
+$app->route->add('/hmzd/dashboard', 'Admin/Dashboard'); 
+$app->route->add('/hmzd/dashboard/sendReqMsg', 'Admin/Dashboard@sendReqMsg');
+$app->route->add('/hmzd/dashboard/sendTrailMsg', 'Admin/Dashboard@sendTrailMsg');
+$app->route->add('/hmzd/req', 'Admin/Req');
+$app->route->add('/hmzd/req/sendMsg', 'Admin/Req@sendMsg');
+$app->route->add('/hmzd/customers', 'Admin/Customers');
+$app->route->add('/hmzd/customers/sendMsg', 'Admin/Customers@sendMsg');
+$app->route->add('/hmzd/adminLogs', 'Admin/AdminLogs');
+$app->route->add('/hmzd/offers', 'Admin/Offers');
+$app->route->add('/hmzd/offers/addoffers', 'Admin/Offers@addOffer');
+$app->route->add('/hmzd/offers/updateOffers', 'Admin/Offers@updateOffers');
+$app->route->add('/hmzd/offers/deleteOffers', 'Admin/Offers@deleteOffer');
+$app->route->add('/hmzd/profits', 'Admin/Profits');
+$app->route->add('/hmzd/trails', 'Admin/Trails');
+$app->route->add('/hmzd/trails/sendMsg', 'Admin/Trails@sendMsg');
+$app->route->add('/hmzd/visters', 'Admin/Visters');
+$app->route->add('/hmzd/actions', 'Admin/AdminActions');
+$app->route->add('/hmzd/seo', 'Admin/Seo');
+$app->route->add('/hmzd/seo/update-dscr', 'Admin/Seo@updateSeoDscr');
+$app->route->add('/hmzd/seo/update-words', 'Admin/Seo@updateSeoWords');
+$app->route->add('/hmzd/cccam/update-code', 'Admin/Cccam@updateCccamCode');
+$app->route->add('/hmzd/cccam', 'Admin/Cccam');
 
 
 // Not found page
@@ -99,7 +62,6 @@ $app->route->notFound('/404');
 
 // logout
 
-//$app->route->add('/logout');
 
 
 

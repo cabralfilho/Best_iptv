@@ -117,6 +117,15 @@ class Database
     private $lastId;
     
     
+    /**
+    * db prefix
+    *
+    * @var string
+    */
+    
+    private $prefix;
+    
+    
     
     /**
     * PDO Connection
@@ -179,7 +188,9 @@ class Database
             
             static::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            static::$connection->exec('SET NAMES utf8');    
+            static::$connection->exec('SET NAMES utf8'); 
+            
+            $this->prefix = $prefix;
             
             
         }
@@ -387,7 +398,7 @@ class Database
         }
         else
         {
-            $sql .= '* ';
+            $sql .= ' * ';
         }
         
         $sql .= ' FROM ' . $this->table;
@@ -426,7 +437,7 @@ class Database
     
     public function table($table)
     {
-        $this->table = $table;
+        $this->table = $this->prefix. $table;
         
         return $this;
     }
@@ -565,7 +576,6 @@ class Database
             $query->bindValue($key + 1, _e($value));
         }
         
-        
         try
         {            
             $query->execute();
@@ -578,7 +588,6 @@ class Database
             
             die(" Error " . $e->getMessage());
         }
-        
         
         return $query;
     }

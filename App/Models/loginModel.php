@@ -12,7 +12,7 @@ class LoginModel extends Model
     * @var string
     */
     
-    protected $table = 'users';
+    protected $table = 'admins';
     
     
     /*
@@ -31,18 +31,15 @@ class LoginModel extends Model
     * @return bool
     */
     
-    public function isValidLogin($email , $pass)
+    public function isValidLogin($name ,$pass)
     {
-        $passHashed =  password_hash($pass, PASSWORD_DEFAULT);
-        
-        $user = $this->where('email=?' , $email)->fetch($this->table);
+        $user = $this->where('name=?', $name)->fetch($this->table);
         
         if (! $user) return false;
         
         $this->user = $user;
         
-        return password_verify($pass, $user->password);
-        
+        return password_verify($pass, $user->pass);
     }
     
     /**

@@ -110,7 +110,7 @@ class Request
     
     
     /**
-    * Get the value from _GET by given key
+    * Get the value from _SERber by given key
     *
     * @param string $key
     * @param mixed $default
